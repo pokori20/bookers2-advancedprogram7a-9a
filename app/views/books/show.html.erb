@@ -1,0 +1,10 @@
+<div>
+    <%= attachment_image_tag @User, :image %>
+    <p>ユーザーネーム：<%= @User.user.name %></p>
+    <p>：<%= @Book.title %></p>
+    <p>：<%= @Book.body %></p>
+
+    <% if @Book.user == current_user %>
+      <%= link_to "", post_image_path(@Book), method: :delete %>
+    <% end %>
+</div>
