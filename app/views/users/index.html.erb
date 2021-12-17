@@ -1,0 +1,25 @@
+<h1>Users</h1>
+<% @users.each do |user| %>
+<div>
+  <%= link_to user_image_path(user_image.id) do %>
+    <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+  <% end %>
+  <p>name：<%= book.title %></p>
+  <%= link_to "Show" ,user(params[:id])_path %>
+
+</div>
+<% end %>
+
+<h1>User info</h1>
+<%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+<p>name : <%= book.title %></p>
+<p>name : <%= book.name %></p>
+
+<h1>Newbook</h1>
+<%= form_with model: @book, local:true do |f| %>
+  <h4>Title</h4>
+  <%= f.text_field :title %>
+  <h4>Opinion</h4>
+  <%= f.text_area :body %>
+  <%= f.submit '投稿' %>
+<% end %>
