@@ -1,27 +1,55 @@
 <div>
+  <h2>User info</h2>
   <h3><%= @user.name %></h3>
+  <tbale>
+    <tbody>
+      <tr>
+        <th>name</th>
+        <th><% if @user.id == current_user.id %></th>
+      </tr>
+      <tr>
+        <th>introduction</th>
+      </tr>
+    </tbody>
+  </tbale>
 
-    <% if @user.id == current_user.id %>
+
+
     <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
   <% end %>
 </div>
-<h1>Books</h1>
-<% @books.each do |book| %>
-<div>
-  <%= link_to user_image_path(user_image.id) do %>
-    <%= attachment_image_tag user_image, :image %>
-  <% end %>
-  <p>Title：<%= book.title %></p>
-  <p>Opinion：<%= book.body %></p>
 
-</div>
-<% end %>
-
-<h1>Newbook</h1>
+<h2>Newbook</h2>
 <%= form_with model: @book, local:true do |f| %>
   <h4>Title</h4>
   <%= f.text_field :title %>
   <h4>Opinion</h4>
   <%= f.text_area :body %>
-  <%= f.submit '投稿' %>
+  <br/>
+  <%= f.submit 'Create Book' %>
 <% end %>
+
+<h1>Books</h1>
+<table>
+  <thead>
+    <tr>
+      <th>image</th>
+      <th>Title</th>
+      <th>Opinion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @books.each do |book| %>
+      <tr>
+      <td><%= link_to user_image_path(user_image.id) do %>
+          <%= attachment_image_tag user_image, :image %>
+          <% end %>
+      </td>
+      <td>Title：<%= book.title %></td>
+      <td>Opinion：<%= book.body %></td>
+      </tr>
+
+    <% end %>
+  </tbody>
+</table>
