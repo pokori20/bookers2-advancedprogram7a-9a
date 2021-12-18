@@ -1,10 +1,52 @@
 <div>
-    <!--< attachment_image_tag @user, :image -->
-    <p>ユーザーネーム：<%= @user.name %></p>
-    <p>：<%= @book.title %></p>
-    <p>：<%= @book.body %></p>
+  <h2>User info</h2>
+  <h3><%= @user.name %></h3>
+  <tbale>
+    <tbody>
+      <tr>
+        <th>name</th>
+        <th><% if @user.id == current_user.id %></th>
+      </tr>
+      <tr>
+        <th>introduction</th>
+      </tr>
+    </tbody>
+  </tbale>
 
-    <% if @book.user == current_user %>
-      <!--= link_to "", post_image_path(@book), method: :delete %>-->
-    <% end %>
+
+
+    <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
+  <% end %>
 </div>
+
+<h2>Newbook</h2>
+<%= form_with model: @book, local:true do |f| %>
+  <h4>Title</h4>
+  <%= f.text_field :title %>
+  <h4>Opinion</h4>
+  <%= f.text_area :body %>
+  <br/>
+  <%= f.submit 'Create Book' %>
+<% end %>
+
+<h1>Books</h1>
+<table>
+  <thead>
+    <tr>
+      <th>image</th>
+      <th>Title</th>
+      <th>Opinion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+      <td></td>
+      <td><%= link_to @book.title, book_path %></td>
+      <td><%= @book.body %></td>
+      <td><%= link_to "Edit", edit_book_path %></td>
+      <td><%= link_to "Destroy", book_path, method: :delete, "data-confirm" => "本当に削しますか？" %></td>
+      </tr>
+
+  </tbody>
+</table>

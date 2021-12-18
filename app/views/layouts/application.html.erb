@@ -12,7 +12,10 @@
   <body>
     <% if user_signed_in? %>
       <li>
-        <%= link_to "Home", root_path, method: :top %>
+        <%= link_to "Bookers", root_path %>
+      </li>
+      <li>
+        <%= link_to "Home", user_path(current_user.id) %>
       </li>
       <li>
         <%= link_to "Users", users_path, method: :index %>
@@ -25,16 +28,19 @@
       </li>
       <% else %>
       <li>
-        <%= link_to "Home", root_path, method: :top %>
+        <%= link_to "Bookers", root_path %>
+      </li>
+      <li>
+        <%= link_to "Home", root_path %>
       </li>
       <li>
         <%= link_to "About", about_path %>
       </li>
       <li>
-        <%= link_to "Books", books_path, method: :index %>
+        <%= link_to "Sign up", new_user_registration_path %>
       </li>
             <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        <%= link_to "Log in", new_user_session_path %>
     <% end %>
 
 
