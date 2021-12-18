@@ -12,8 +12,20 @@
 
 <h1>User info</h1>
 <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
-<p>name : <%= book.title %></p>
-<p>name : <%= book.name %></p>
+<table>
+  <tbody>
+    <tr>
+      <th>name</th>
+    </tr>
+    <tr>
+      <th>name</th>
+      <th><%= user.name %></th>
+    </tr>
+    <tr>
+      <th>introduction</th>
+    </tr>
+  </tbody>
+</table>
 
 <h1>Newbook</h1>
 <%= form_with model: @book, local:true do |f| %>
