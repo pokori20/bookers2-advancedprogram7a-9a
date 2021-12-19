@@ -18,10 +18,10 @@
         <%= link_to "Home", user_path(current_user.id) %>
       </li>
       <li>
-        <%= link_to "Users", users_path, method: :index %>
+        <%= link_to "Users", users_path %>
       </li>
       <li>
-        <%= link_to "Books", books_path, method: :index %>
+        <%= link_to "Books", books_path %>
       </li>
             <li>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
