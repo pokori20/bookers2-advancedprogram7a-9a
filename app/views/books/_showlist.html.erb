@@ -1,20 +1,20 @@
 <div>
   <h2>User info</h2>
-  <%= attachment_image_tag current_user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" %>
+  <%= attachment_image_tag user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" %>
   <table class="table">
     <tbody>
       <tr>
         <th>name</th>
-        <th><%= current_user.name %></th>
+        <th><%= user.name %></th>
       </tr>
       <tr>
         <th>introduction</th>
-        <th><%= current_user.introduction %></th>
+        <th><%= user.introduction %></th>
       </tr>
     </tbody>
   </table>
 
-    <p><%= link_to "プロフィール編集", edit_user_path(current_user) %></p>
+    <p><%= link_to "プロフィール編集", edit_user_path(user) %></p>
 
 </div>
 
