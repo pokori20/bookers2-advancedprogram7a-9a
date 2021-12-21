@@ -1,7 +1,7 @@
-<%= flash[:notice] %>
 <%= render 'books/showlist', book: @book_new, user: @user %>
-<h1>Book detail</h1>
-<table>
+<div class="col-md-8 offset-md-1">
+<h2>Book detail</h2>
+<table class="table table-hover table-inverse">
   <thead>
     <tr>
       <th>image</th>
@@ -12,12 +12,12 @@
   </thead>
   <tbody>
       <tr>
-      <td><%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" %><br/><%= @user.name %></td>
+      <td><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg",size:'40x40' %><br/><%= link_to @user.name,user_path(@user.id) %></td>
       <td><%= link_to @book.title, book_path %></td>
       <td><%= @book.body %></td>
       <% if @user == current_user %>
-        <td><%= link_to "Edit", edit_book_path %></td>
-        <td><%= link_to "Destroy", book_path, method: :delete, "data-confirm" => "本当に消しますか？" %></td>
+        <td><%= link_to "Edit", edit_book_path, class: "btn btn-sm btn-success"%></td>
+        <td><%= link_to "Destroy", book_path, method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-sm btn-danger" %></td>
       <% else %>
         <td></td>
         <td></td>
