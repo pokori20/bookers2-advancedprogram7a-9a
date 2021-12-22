@@ -12,7 +12,7 @@
   </thead>
   <tbody>
       <tr>
-      <td><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg",size:'40x40' %><br/><%= link_to @user.name,user_path(@user.id) %></td>
+      <td><%= link_to attachment_image_tag(@user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg",size:'40x40'),user_path(@user.id) %><br/><%= link_to @user.name,user_path(@user.id) %></td>
       <td><%= link_to @book.title, book_path %></td>
       <td><%= @book.body %></td>
       <% if @user == current_user %>
