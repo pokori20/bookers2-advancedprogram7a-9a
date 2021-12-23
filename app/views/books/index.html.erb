@@ -1,6 +1,12 @@
 
 <%= render 'users/list', book: @book, user: @user %>
 <div class="col-md-8 offset-md-1">
+  <% if @book.errors.any? %>
+  <%= @book.errors.count %>errors prohibited this obj from being saved
+  <% @book.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
 <h1>Books</h1>
   <table class="table table-hover table-inverse">
     <thead>

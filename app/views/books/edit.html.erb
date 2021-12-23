@@ -1,5 +1,11 @@
 
 <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>errors prohibited this obj from being saved
+  <% @book.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
  <h1>Editing Book</h1>
   <%= form_with model:@book, url:"/books/#{@book.id}", local:true do |f| %>
   <div class="form-group">
