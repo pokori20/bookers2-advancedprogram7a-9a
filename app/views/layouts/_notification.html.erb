@@ -1,5 +1,14 @@
+<!--deviseのflashメッセージを表示するため。-->
 <div class="Notification">
  <% flash.each do |key, value| %>
  <%= content_tag :div, value, class: key %>
  <% end %>
 </div>
+<!--app/hlepers/devise_helper.rbを作成済で以下記述でdeviseのflashを修飾-->
+ <!--flash.each do |key, value| %>-->
+  <!--<div class="alert alert-<%# bootstrap_alert(key) %>">-->
+    <!--<strong>-->
+      <%# value %>
+    <!--</strong>-->
+  <!--</div>-->
+ <!--end % >-->

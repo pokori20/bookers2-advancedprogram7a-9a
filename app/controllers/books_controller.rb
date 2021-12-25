@@ -33,8 +33,8 @@ class BooksController < ApplicationController
   def update
     @book = Book.find(params[:id])
     if @book.update(book_params)
-      flash[:notice]="You have updated book successfully."
-      redirect_to book_path(@book.id)
+  # noticeとalertがキーの場合下記のように省略できます。
+      redirect_to book_path(@book.id), notice:"You have updated book successfully."
     else
       render :edit
     end
