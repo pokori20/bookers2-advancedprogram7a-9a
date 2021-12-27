@@ -11,6 +11,12 @@
         <th>introduction</th>
         <th><%= current_user.introduction %></th>
       </tr>
+      <tr>
+        <th>follows: <%= user.followings.count %></th>
+      </tr>
+      <tr>
+        <th>followers: <%= user.followers.count %></th>
+      </tr>
     </tbody>
   </table>
 
