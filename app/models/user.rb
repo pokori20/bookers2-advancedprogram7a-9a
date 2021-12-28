@@ -28,4 +28,18 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
+  def self.search_for(content, method)
+    if method == 'perfect'
+       User.where(name: content)
+      # 前方一致　モデル名.where('カラム名 like ?','検索したい文字列%')
+    elsif method == 'forward'
+      User.where('name LIKE ?', content+'%')
+      # 後方一致
+    elsif method == 'backward'
+      User.where('name LIKE ?', '%'+content)
+      # 部分一致
+    else
+      User.where('name LIKE ?', '%'+content+'%')
+    end
+  end
 end
