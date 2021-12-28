@@ -55,6 +55,10 @@
     </header>
     <main>
       <%= render 'layouts/notification' %>
+      <!--検索フォームの部分テンプレート挿入-->
+      <% if user_signed_in? %>
+          <%= render 'layouts/search' %>
+      <% end %>
       <div class="container px-5 px-sm-0 mt-3">
        <div class="row">
 
