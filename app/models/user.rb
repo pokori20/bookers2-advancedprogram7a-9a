@@ -31,7 +31,7 @@ class User < ApplicationRecord
   def self.search_for(content, method)
     if method == 'perfect'
        User.where(name: content)
-      # 前方一致　モデル名.where('カラム名 like ?','検索したい文字列%')
+      # 前方一致　モデル名.where('カラム名 like ?','検索したい文字列%')→Userモデルのnameカラムの文字列データのどこかにcontent+(前方一致)と含まれているレコードを取得という意味
     elsif method == 'forward'
       User.where('name LIKE ?', content+'%')
       # 後方一致
