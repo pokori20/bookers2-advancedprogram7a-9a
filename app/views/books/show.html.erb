@@ -37,24 +37,9 @@
         <td><p>コメント数：<%= @book.book_comments.count %></p></td>
       <% end %>
       </tr>
-      <% @book.book_comments.each do |book_comment| %>
-      <tr>
-        <td>
-          <%= link_to attachment_image_tag(book_comment.user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg",size:'40x40'),user_path(book_comment.user_id) %>
-          </br><%= link_to book_comment.user.name,user_path(book_comment.user_id) %>
-        </td>
-        <td><%= book_comment.comment %></td>
-        <% if book_comment.user == current_user %>
-          <td>
-            <%= link_to "Destroy", book_book_comment_path(@book, book_comment), method: :delete, "data-confirm" => "本当に消しますか？", class: "btn btn-sm btn-danger" %>
-          </td>
-        <% end %>
+      <tr id="bookcomment">
+         <%= render 'book_comments/bookcomment', book: @book, book_comment: @book_comment %>
       </tr>
-      <% end %>
   </tbody>
 </table>
-<!--コメント機能部分テンプレート-->
-  <div id="bookcomment">
-  <%= render 'book_comment/bookcomment', book: @book, book_comment: @book_comment %>
-  </div>
 </div>
