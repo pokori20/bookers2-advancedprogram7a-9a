@@ -1,5 +1,6 @@
+   <table class="table table-hover table-inverse">
     <% book.book_comments.each do |book_comment| %>
-
+    <tr>
         <td>
           <%= link_to attachment_image_tag(book_comment.user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg",size:'40x40'),user_path(book_comment.user_id) %>
           </br><%= link_to book_comment.user.name,user_path(book_comment.user_id) %>
@@ -11,11 +12,11 @@
           </td>
         <% end %>
       </tr>
-      <% end %>
-      <tr>
-        <td colspan="5">
-            <%= form_with(model:[book, book_comment], remote: true) do |f| %>
-              <%= f.text_area :comment, rows:'5',style: "width:100%" %>
-              <%= f.submit "送信" %>
-            <% end %>
-        </td>
+    <% end %>
+  </table>
+  <div colspan="5">
+    <%= form_with(model:[book, book_comment], remote: true) do |f| %>
+      <%= f.text_area :comment, rows:'5',style: "width:100%" %>
+      <%= f.submit "送信" %>
+    <% end %>
+  </div>
