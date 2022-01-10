@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'chats/show'
   get 'searches/search'
   get 'relationships/followings'
   get 'relationships/followers'
@@ -19,6 +20,9 @@ Rails.application.routes.draw do
   end
   # 検索機能のルーティング
   get '/search', to: 'searches#search'
+  # chatのshowアクションをchat/:idとルーティング
+  get 'chat/:id', to: 'chats#show', as: 'chat'
+  resources :chats, only: [:create]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

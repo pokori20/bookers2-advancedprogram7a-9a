@@ -13,9 +13,13 @@ class User < ApplicationRecord
   # 一覧画面で使う
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
+  # チャットルームのアソシエーション
+  has_many :chats, dependent: :destroy
+  has_many :user_rooms, dependent: :destroy
   attachment :profile_image
   validates :name, presence: true, uniqueness: true, length: { in: 2..20 }
   validates :introduction, length: { maximum: 50}
+
   # フォローしたときの処理
   def follow(user_id)
   relationships.create(followed_id: user_id)
