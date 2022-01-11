@@ -20,6 +20,7 @@ class User < ApplicationRecord
   validates :name, presence: true, uniqueness: true, length: { in: 2..20 }
   validates :introduction, length: { maximum: 50}
 
+
   # フォローしたときの処理
   def follow(user_id)
   relationships.create(followed_id: user_id)

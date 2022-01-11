@@ -31,7 +31,9 @@ class ChatsController < ApplicationController
   
   def create
     @chat = current_user.chats.new(chat_params)
-    @chat.save
+    unless @chat.save #メッセージの保存に失敗した場合
+     render 'error' #chats/error.js.erbを呼び出す
+    end
   end
   
   private
