@@ -1,5 +1,9 @@
 /*.messageを部分更新。appendメソッドで要素を追加 */
 $('.message').append("<p style='text-align: left;'><%= @chat.message %></p>");
+<!--$('指定した要素classやidも可').append('追加したい内容');-->
+<!--appendは要素の末尾に追加似たメソッドのprependは文頭追加-->
 
 /*チャット投稿後、フォームの値に前回の投稿内容が残らないようにする */
 $('input[type=text]').val("")
+<!--val()でHTMLタグ内に記述されているvalue属性を取得したり変更することができるメソッド-->
+<!--つまり<%#= f.text_field :message %> htmlだとinput[type=text]に空の値を渡す-->

@@ -15,7 +15,6 @@ class BooksController < ApplicationController
   end
 
   def index
-
     @book = Book.new
     @user = current_user
 
@@ -27,13 +26,14 @@ class BooksController < ApplicationController
     # ...は範囲演算子例　1..5 は1～5 1...5は終端を含まないので1～4の意味
     # Book.allと書かない理由はincludes(引数)と記述した方が余分なsqlを発行しなくなるため軽くなる
     # Arrayオブジェクト.sort {|a, b| ... } Arrayは配列の意味　配列の中身をa bを用いてどのように比較するか可能
-        @books = Book.includes(:favorited_users).
-          sort {|a,b|
-          # a <=> b基本的な比較演算子　 a < b であれば -1、a == b であれば 0、a > b であれば 1、比較できない時は nil を返えす。
-          # bを先に記述して降順にしている。
-        b.favorited_users.includes(:favorites).where(created_at: from...to).size <=>
-        a.favorited_users.includes(:favorites).where(created_at: from...to).size
-      }
+    @books = Book.includes(:favorited_users).
+      sort {|a,b|
+      # a <=> b基本的な比較演算子　 a < b であれば -1、a == b であれば 0、a > b であれば 1、比較できない時は nil を返えす。
+      # bを先に記述して降順にしている。
+    b.favorited_users.includes(:favorites).where(created_at: from...to).size <=>
+    a.favorited_users.includes(:favorites).where(created_at: from...to).size}
+  
+      
     @book = Book.new
     # @all_ranks = Book.find(Favorite.group(:book_id).order('count(book_id) desc').pluck(:book_id))
   end
@@ -43,6 +43,8 @@ class BooksController < ApplicationController
     @user = @book.user
     @book_new  = Book.new
     @book_comment= BookComment.new
+    #bookの詳細ページにアクセスするとPV数が1増える
+    impressionist(@book, nil, unique: [:ip_address])
   end
 
   def edit
