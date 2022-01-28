@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   # chatのshowアクションをchat/:idとルーティング
   get 'chat/:id', to: 'chats#show', as: 'chat'
   resources :chats, only: [:create]
+  #グループ機能用ルーティング
+  resources :groups, except: [:destroy]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

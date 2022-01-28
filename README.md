@@ -1,24 +1,6 @@
-# README
+DMM WEBCAMPのプログラミング学習の軌跡
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+内容：Railsで本投稿サイト Bookers に拡張機能を追加
+本の投稿一覧ページで、過去一週間でいいねの合計カウントが多い順に投稿を表示
+ユーザ同士で 1 対 1 の DM ができるようにする
+ページの閲覧数をカウントし、投稿一覧、投稿詳細に表示させる
