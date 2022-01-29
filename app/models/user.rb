@@ -20,8 +20,8 @@ class User < ApplicationRecord
   validates :name, presence: true, uniqueness: true, length: { in: 2..20 }
   validates :introduction, length: { maximum: 50}
   #グループのアソシエーション
-  has_many :group_user
-  has_many :group, through: :group_user
+  has_many :group_users
+  has_many :groups, through: :group_users
   # フォローしたときの処理
   def follow(user_id)
   relationships.create(followed_id: user_id)

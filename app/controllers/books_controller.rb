@@ -17,7 +17,6 @@ class BooksController < ApplicationController
   def index
     @book = Book.new
     @user = current_user
-
     # Time.current.at現在の時刻を取得つまり to = 今日の終わり
     to = Time.current.at_end_of_day
     # 6日前のはじめ
@@ -32,7 +31,6 @@ class BooksController < ApplicationController
       # bを先に記述して降順にしている。
     b.favorited_users.includes(:favorites).where(created_at: from...to).size <=>
     a.favorited_users.includes(:favorites).where(created_at: from...to).size}
-  
       
     @book = Book.new
     # @all_ranks = Book.find(Favorite.group(:book_id).order('count(book_id) desc').pluck(:book_id))

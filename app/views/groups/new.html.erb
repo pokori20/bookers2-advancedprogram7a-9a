@@ -1,0 +1,31 @@
+
+<div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+<% if @group.errors.any? %>
+  <%= @group.errors.count %>errors prohibited this obj from being saved
+  <% @group.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+ <h1>Create Group</h1>
+  <%= form_with model:@group, url: groups_path, local:true do |f| %>
+  <div class="form-group">
+    <p>グループ名</p>
+    <%= f.text_field :name, style: "width:100%" %>
+  </div>
+  <div class="form-group">
+    <p>紹介文</p>
+    <%= f.text_area :introduction, style: "width:100%" %>
+  </div>
+  <div class="form-group">
+    <label for="inputImage">グループ画像</label>
+    <br/>
+    <%= f.attachment_field :image %>
+  </div>
+  <div class="form-group">
+    <%= f.submit 'Create Group',class: "btn btn-success" %>
+  <% end %>
+  </div>
+  <%#= link_to "Show", book_path %>
+  <span>|</span>
+  <%= link_to "Back", books_path %>
+</div>
