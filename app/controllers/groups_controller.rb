@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+  before_action :correct_user, only: [:edit, :update]
   def new
     @group = Group.new
   end
@@ -25,10 +26,18 @@ class GroupsController < ApplicationController
 
   def update
     @group = Group.find(params[:id])
-    @group = Group.update
+    if @group.update(group_params)
+      #owner_idカラムにグループを作成したユーザーのIDを保存
+      @group.owner_id = current_user.id
+      redirect_to groups_path
+    else
+      render 'new'
+    end
   end
 
   def show
+    @user = User.find(params[:id])
+    @book = Book.new
     @group = Group.find(params[:id])
   end
 
@@ -36,6 +45,11 @@ class GroupsController < ApplicationController
 
   def group_params
     params.require(:group).permit(:name, :image, :introduction)
+  end
+
+  def correct_user
+    @group = Group.find(params[:id])
+    redirect_to groups_path unless @group.owner_id == current_user.id
   end
 
 end

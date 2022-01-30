@@ -1,7 +1,6 @@
 class BooksController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
 
-
   def create
     @book = Book.new(book_params)
     @book.user_id = current_user.id
@@ -41,7 +40,7 @@ class BooksController < ApplicationController
     @user = @book.user
     @book_new  = Book.new
     @book_comment= BookComment.new
-    #bookの詳細ページにアクセスするとPV数が1増える
+    #bookの詳細ページにアクセスするとPV数が1増える。impressionistはgemをいれることで使えるメソッド
     impressionist(@book, nil, unique: [:ip_address])
   end
 
