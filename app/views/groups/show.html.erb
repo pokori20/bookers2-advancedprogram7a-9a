@@ -21,6 +21,7 @@
           <!--グループのオーナーのみeditリンクを表示-->
           <% if @group.owner_id == current_user.id %>
             <td><%= link_to "Edit", edit_group_path(@group.id), class: "btn btn-sm btn-success"%></td>
+            <td><%#= link_to "Notice an Event", _path(@group.id), class: "btn btn-sm btn-primary"%></td>
             <!--@group.usersの配列の中にcurrent_userが存在する場合-->
           <% elsif @group.users.include?(current_user) %>
             <td><%= link_to "Leave this group", group_path(@group.id), method: :delete, class: "btn btn-sm btn-danger"%></td>
